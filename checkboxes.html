@@ -1,0 +1,54 @@
+<!--INCLUDE CSS along with FONTAWESOME/ MANDATORY-->
+<link rel="stylesheet" href="https://ux-static.online.worksafebc.com/css/wsbc.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="mobilecheckboxes">
+
+<!--CSS for mobile checkboxes-->
+<style>
+  .border-mobile-blue {border-color: #6399AE !important;}
+  
+@media only screen and (max-width: 768px) {
+  .checkmark {margin-left: 13px;margin-top: 8px;}
+  .border-mobile {border: 1px solid #e4e2e0; width:100%; padding:12px 12px 12px 40px; display: flex; align-items: center; border-radius:6px;}
+  } 
+</style>
+
+  
+  <!--JAVASCRIPT applies the blue border via class-->
+<script>
+    function handleCheckboxChange(checkbox) {
+      var labelElements = document.querySelectorAll('label.container-radio');
+      labelElements.forEach(function(labelElement) {
+        if (labelElement.querySelector('input[type="checkbox"]').checked && labelElement !== checkbox.parentElement) {
+          labelElement.classList.remove('border-mobile-blue');
+          labelElement.querySelector('input[type="checkbox"]').checked = false;
+        }
+      });
+
+      if (checkbox.checked) {checkbox.parentElement.classList.add('border-mobile-blue');} 
+      else {checkbox.parentElement.classList.remove('border-mobile-blue');}
+    }
+</script>
+
+  
+<!--HTML Example-->
+<form class="p-5">
+<label class="container-radio border-mobile "> 
+  <input  tabindex="0" type="checkbox" id="check1" name="checkbox-group" onchange="handleCheckboxChange(this)">
+  <span class="checkmark "></span>
+  I'm an employer
+</label>
+<label class="container-radio border-mobile"> 
+  <input  tabindex="0" type="checkbox" id="check2" name="checkbox-group" onchange="handleCheckboxChange(this)">
+  <span class="checkmark"></span>
+  I'm a worker
+</label>
+<label class="container-radio border-mobile"> 
+  <input  tabindex="0" type="checkbox" id="check3" name="checkbox-group" onchange="handleCheckboxChange(this)">
+  <span class="checkmark"></span>
+ I'm a provider
+</label>
+</form>
+  
+</div>

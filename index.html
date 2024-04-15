@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Composite Micro Framework</title>
+<link rel="stylesheet" href="https://unpkg.com/axist@latest/dist/axist.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+pre {background: cyan !important; color:black !important;font-size: 0.8rem}
+body {font-size: 1.5rem}
+.video-container { width: 100%; }
+video { width: 100%; height: auto; }
+
+
+</style>
+</head>
+<body>
+
+<h1 style="color:orangered;">Getting Started with Composite Micro Framework</h1>
+<p><em>by David Echeverri</em></p>
+
+<h2>Composite: an html component loader that allows you to load web components with a simple line <pre class="animatedborder" style="font-size:1.5rem">data-load="doc.html"</h2>
+<p>The problem we are addressing is the haunting need for large frameworks and libraries to simply embed HTML inside HTML without using iframes but in a more elegant way. Composite provides a lightweight solution for creating web components using the data-load attribute to load HTML snippets or chunks.</p>
+
+
+<div class="video-container">
+  <video controls>
+    <source src="demo.mp4" type="video/mp4">
+    <!-- Add more <source> tags for different video formats if needed -->
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+
+<img style="width:20%; float:left" src="https://www.fabsoap.ca/cdn/shop/products/90939acb02be6c2e6be478ccfa701a99959c26b450e29a6f799b80bd7b946670_1080x.webp?v=1674073035">
+
+<h2>Full Page Skeleton Example</h2>
+<p>Below is an example of a full page skeleton or boilerplate with Composite integrated:</p>
+<pre>
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My Composite App&lt;/title&gt;
+
+    &lt;style&gt;
+      /* Your custom styles can go here */
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;h1&gt;Welcome to My Composite App&lt;/h1&gt;
+    &lt;div data-load="component1.html"&gt;&lt;/div&gt;
+    &lt;div data-load="component2.html"&gt;&lt;/div&gt;
+
+
+    &lt;script src="composite.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+      document.addEventListener('DOMContentLoaded', loadComponents);
+    &lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;
+</pre>
+
+<h2>How to Use Composite</h2>
+<p>To use Composite in your projects, follow these steps:</p>
+<ol>
+  <li>Include the Composite script in your HTML file:</li>
+  <pre>&lt;script src="composite.js"&gt;&lt;/script&gt;</pre>
+  <li>Add the data-load attribute to your HTML elements to specify the path to the HTML snippet you want to load:</li>
+  <pre>&lt;div data-load="component1.html"&gt;&lt;/div&gt;</pre>
+  <li>Initialize Composite by calling the loadComponents function when the DOM content is loaded:</li>
+  <pre>&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', loadComponents);
+  &lt;/script&gt;</pre>
+</ol>
+
+
+<div>
+    <h2>Made by a designer for designers and developers</h2>
+    <p>Composite was crafted with the needs of both designers and developers in mind. Its simplicity streamlines the process of creating component-based prototypes, eliminating unnecessary complexity and allowing designers to focus on their creativity without getting bogged down by technical details. By providing an intuitive and straightforward framework, Composite empowers designers to efficiently express their ideas and iterate on designs, while also offering developers a seamless integration process.</p>
+
+    <h2>Rapidly prototype without any build process or massive directories, keep it flat and elegant</h2>
+    <p>With Composite, prototyping becomes a breeze, eliminating the need for cumbersome build processes or extensive directory structures. By keeping the workflow flat and elegant, designers can quickly modularize their work into smaller, more manageable chunks. This approach encourages a more iterative and agile design process, allowing designers to experiment with different components and layouts without being hindered by organizational overhead. By breaking down designs into smaller, more focused units, designers can maintain better control over their projects and adapt more easily to changes, resulting in more efficient and effective prototyping.</p>
+
+    <h2>AI Helped</h2>
+    <p>Composite benefits from the collaborative efforts of both AI technology and human creativity. While the framework was developed with detailed specifications provided by designers, AI played a crucial role in streamlining the development process and ensuring optimal performance. By leveraging AI-powered tools and techniques, the framework was able to automate repetitive tasks, generate efficient code structures, and identify potential optimizations. This collaborative approach resulted in a framework that combines the creativity and intuition of human designers with the efficiency and precision of AI technology, providing users with a powerful and intuitive tool for creating web components.</p>
+</div>
+
+
+<h2>Additional Resources</h2>
+<p>For more information and updates, visit the Composite GitHub repository: <a href="https://github.com/your-username/composite">Composite Repository</a></p>
+
+<p>Want to see composite in action?: <a href="demo.html">View demo</a></p>
+
+
+<h2>Composite.js File</h2>
+<p>Do you need the javascript file right away? go for it my friend.</p>
+<pre>
+   
+        function loadComponents() {
+            const componentContainers = document.querySelectorAll('[data-load]');
+            componentContainers.forEach(container => {
+                const url = container.getAttribute('data-load');
+                fetch(url)
+                    .then(response => response.text())
+                    .then(html => {
+                        const shadowRoot = container.attachShadow({ mode: 'open' });
+                        shadowRoot.innerHTML = html;
+                    })
+                    .catch(error => console.error('Error loading component:', error));
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+  
+</pre>
+
+
+
+
+
+</body>
+</html>

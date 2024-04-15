@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scoped CSS Example</title>
+<link rel="stylesheet" href="https://unpkg.com/axist@latest/dist/axist.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+
+
+<h1>Welcome</h1>
+<div data-load="component1.html"></div>
+<div data-load="component2.html"></div>
+<div data-load="lead.html"></div>
+<div data-load="fabs.html"></div>
+
+
+  <!--composite.js -->
+<script>
+function loadComponents() {
+const componentContainers = document.querySelectorAll('[data-load]');
+componentContainers.forEach(container => {
+const url = container.getAttribute('data-load');
+fetch(url)
+.then(response => response.text())
+.then(html => {
+const shadowRoot = container.attachShadow({ mode: 'open' });
+shadowRoot.innerHTML = html;
+})
+.catch(error => console.error('Error loading component:', error));
+});
+}
+
+document.addEventListener('DOMContentLoaded', loadComponents);
+</script>
+</body>
+</html>
